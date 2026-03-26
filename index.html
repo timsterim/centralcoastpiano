@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Central Coast Piano</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f5f2ec;
+      --warm-white: #faf9f6;
+      --ink: #1e1c18;
+      --muted: #7a7568;
+      --accent: #4a3728;
+      --accent-light: #8c6b55;
+      --accent-warm: #c4956a;
+      --border: #ddd8ce;
+      --tab-active: #1e1c18;
+    }
+
+    body {
+      background: var(--warm-white);
+      color: var(--ink);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      padding: 32px 48px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .logo-wrap img {
+      width: 340px;
+      height: auto;
+      display: block;
+      opacity: 0.88;
+    }
+
+    .logo-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-top: -4px;
+    }
+
+    .logo-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+    }
+
+    /* ── NAV TABS ── */
+    nav {
+      display: flex;
+      gap: 0;
+      margin-top: 4px;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 12px 32px;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      position: relative;
+      top: 1px;
+    }
+
+    nav button:hover { color: var(--ink); }
+    nav button.active {
+      color: var(--tab-active);
+      border-bottom-color: var(--accent-warm);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 64px 48px 48px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent-warm);
+    }
+
+    .hero h2 {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.88rem, 2vw, 1.05rem);
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto;
+      letter-spacing: 0.02em;
+    }
+
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--accent-warm);
+      margin: 32px auto;
+      opacity: 0.6;
+    }
+
+    /* ── CONTENT AREA ── */
+    .content-area {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 16px 48px 80px;
+    }
+
+    /* ── TAB PANELS ── */
+    .panel { display: none; }
+    .panel.active { display: block; animation: fadeIn 0.35s ease; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── ABOUT PANEL ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 8px;
+    }
+
+    .about-block {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      padding: 36px 32px;
+    }
+
+    .about-block .label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+      margin-bottom: 14px;
+    }
+
+    .about-block h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 1.3;
+      margin-bottom: 14px;
+    }
+
+    .about-block p {
+      font-size: 0.93rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .philosophy-strip {
+      background: var(--accent);
+      color: var(--warm-white);
+      padding: 40px 48px;
+      margin: 40px -48px;
+      text-align: center;
+    }
+
+    .philosophy-strip p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.7;
+      max-width: 580px;
+      margin: 0 auto;
+      opacity: 0.95;
+    }
+
+    /* ── SERVICE SECTION ── */
+    .service-intro {
+      margin-bottom: 40px;
+    }
+
+    .service-intro p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--muted);
+      max-width: 680px;
+    }
+
+    .tip-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .tip-list li {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 20px;
+      align-items: start;
+      padding: 28px 32px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+
+    .tip-list li:hover { border-color: var(--accent-light); }
+
+    .tip-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--accent-warm);
+      line-height: 1;
+      padding-top: 2px;
+    }
+
+    .tip-body .tip-title {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .tip-body p {
+      font-size: 0.93rem;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    /* ── PRICING STRIP ── */
+    .pricing-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 40px 0 0;
+    }
+
+    .price-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      padding: 32px;
+      text-align: center;
+    }
+
+    .price-card .price-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+      margin-bottom: 10px;
+    }
+
+    .price-card .price-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .price-card .price-desc {
+      font-size: 0.85rem;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    /* ── CONTACT PANEL ── */
+    .contact-intro {
+      margin-bottom: 36px;
+    }
+
+    .contact-intro p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--muted);
+      max-width: 620px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-row label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+    }
+
+    .form-row input,
+    .form-row select,
+    .form-row textarea {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      padding: 12px 16px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    .form-row input:focus,
+    .form-row select:focus,
+    .form-row textarea:focus {
+      border-color: var(--accent-warm);
+    }
+
+    .form-row textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-row select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238c6b55' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+    }
+
+    .submit-btn {
+      background: none;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 14px 36px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      align-self: flex-start;
+      margin-top: 6px;
+    }
+
+    .submit-btn:hover { background: var(--accent); color: var(--warm-white); }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .contact-info-block {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      padding: 28px 28px;
+    }
+
+    .contact-info-block .label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+      margin-bottom: 10px;
+    }
+
+    .contact-info-block p {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .form-success {
+      display: none;
+      background: var(--cream);
+      border: 1px solid var(--accent-light);
+      padding: 24px 28px;
+      margin-top: 16px;
+    }
+
+    .form-success p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 48px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      background: var(--cream);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      header { padding: 24px 20px 0; }
+      .hero { padding: 40px 20px 32px; }
+      .content-area { padding: 16px 20px 60px; }
+      .about-grid, .pricing-strip, .contact-grid { grid-template-columns: 1fr; }
+      nav button { padding: 12px 14px; font-size: 11px; letter-spacing: 0.08em; }
+      .philosophy-strip { margin: 40px -20px; padding: 32px 24px; }
+      .logo-wrap img { width: 260px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-wrap">
+    <img src="CentralCoastPiano.png" alt="Central Coast Piano" />
+    <div class="logo-name">Central Coast Piano</div>
+    <div class="logo-sub">Tuning &nbsp;·&nbsp; Ear Playing &nbsp;·&nbsp; Monterey to the Bay</div>
+  </div>
+
+  <nav>
+    <button class="active" onclick="showTab('about', this)">About</button>
+    <button onclick="showTab('tuning', this)">Tuning</button>
+    <button onclick="showTab('lessons', this)">Lessons</button>
+    <button onclick="showTab('contact', this)">Contact</button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <h1><em>Resonance.</em> From the Inside Out.</h1>
+  <div class="divider"></div>
+  <h2>Where discordance yields to harmony — on the keys, in the ear, and in the soul. Piano tuning and ear-playing lessons along the California Central Coast.</h2>
+</div>
+
+<!-- CONTENT -->
+<div class="content-area">
+
+  <!-- ── ABOUT ── -->
+  <div id="tab-about" class="panel active">
+    <div class="about-grid">
+      <div class="about-block">
+        <p class="label">The Work</p>
+        <h3>Two Offerings, One Philosophy</h3>
+        <p>Piano tuning and ear-playing instruction might seem like different worlds, but they share the same root: a deep listening. Whether coaxing a string into tune or unlocking a chord by feel, the ear is always the guide. You already have one — we just develop it together.</p>
+      </div>
+      <div class="about-block">
+        <p class="label">The Tuner</p>
+        <h3>A Zen Practice in Sound</h3>
+        <p>Tuning is a meditative act. The moment a piano moves from discordance into resonance is genuinely joyful — and that joy is present in every appointment. There's also the quiet delight of sitting down to play an instrument freshly brought to life, especially one never played before.</p>
+      </div>
+      <div class="about-block">
+        <p class="label">The Teacher</p>
+        <h3>Playing What You Hear</h3>
+        <p>Learning to play by ear is one of the most liberating things a musician can do. The approach connects especially well with kids — there's something natural about learning to trust what you hear before you read what you see. But this path is open to anyone at any age.</p>
+      </div>
+      <div class="about-block">
+        <p class="label">Where We Are</p>
+        <h3>The Central Coast</h3>
+        <p>Service runs from Monterey up through the Bay — Fremont, San Mateo, Gilroy, and everywhere in between. If you have a piano that needs care, or a student who is ready to unlock their ear, the drive is worth it. Reach out and let's make it happen.</p>
+      </div>
+    </div>
+
+    <div class="philosophy-strip">
+      <p>"Every piano is waiting to be heard properly — and every player has music inside them that hasn't found its way out yet. Both of those things can change."</p>
+    </div>
+  </div>
+
+  <!-- ── TUNING ── -->
+  <div id="tab-tuning" class="panel">
+    <div class="service-intro">
+      <p>A well-tuned piano doesn't just sound better — it feels different to play. The resonance between strings, the way chords bloom and sustain, the confidence a player feels when the instrument responds truly. Tuning is the foundation everything else is built on.</p>
+    </div>
+    <ul class="tip-list">
+      <li>
+        <span class="tip-num">01</span>
+        <div class="tip-body">
+          <div class="tip-title">The Standard Tune-Up</div>
+          <p>For pianos that are tuned regularly or are only slightly out of pitch. A thorough tuning that brings the instrument into its full resonance. Usually about two hours, done with care and genuine enjoyment. There is real satisfaction in handing a piano back to its owner in a state of harmony.</p>
+        </div>
+      </li>
+      <li>
+        <span class="tip-num">02</span>
+        <div class="tip-body">
+          <div class="tip-title">Pitch Raise</div>
+          <p>When a piano has been out of tune for a long time or significantly below pitch, it needs to be raised to tension before a fine tuning can hold. This is a two-pass process — bring the strings up, then tune them true. It takes more time, more skill, and rewards you with a piano that stays in tune much longer.</p>
+        </div>
+      </li>
+      <li>
+        <span class="tip-num">03</span>
+        <div class="tip-body">
+          <div class="tip-title">The Joy of a Fresh Instrument</div>
+          <p>One of the quiet pleasures of this work is sitting down at the end of a session and playing the piano — especially one played for the first time. A freshly tuned piano has a kind of aliveness to it. You'll hear it too, the first time you play after a tuning. That difference is real, and it matters.</p>
+        </div>
+      </li>
+      <li>
+        <span class="tip-num">04</span>
+        <div class="tip-body">
+          <div class="tip-title">How Often Should You Tune?</div>
+          <p>Most pianos benefit from tuning twice a year — once in fall when heating systems come on and the air dries, and once in spring. Pianos that are played frequently, that live in variable climates, or that support a student in lessons may benefit from more. When in doubt, it's probably time.</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="pricing-strip">
+      <div class="price-card">
+        <div class="price-label">Standard Tuning</div>
+        <div class="price-amount">$150</div>
+        <div class="price-desc">A thorough tuning for pianos in reasonable pitch. Approximately two hours. Includes playing the instrument after — because every tuned piano deserves to be heard.</div>
+      </div>
+      <div class="price-card">
+        <div class="price-label">Pitch Raise + Tuning</div>
+        <div class="price-amount">$250</div>
+        <div class="price-desc">For pianos significantly below pitch. A two-pass process that brings the instrument up to tension, then into fine tune. The result is a piano that holds and resonates as it should.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── LESSONS ── -->
+  <div id="tab-lessons" class="panel">
+    <div class="service-intro">
+      <p>Ear playing is different from reading music — it starts from the inside. You learn to recognize what you hear, trust your instincts, and let your hands find what your ears already know is there. The curriculum builds from the ground up, and the progress is deeply satisfying.</p>
+    </div>
+    <ul class="tip-list">
+      <li>
+        <span class="tip-num">01</span>
+        <div class="tip-body">
+          <div class="tip-title">Chords & Inversions</div>
+          <p>We begin with the building blocks — major, minor, dominant, and beyond. Then we explore inversions: the same chord in different voices, opening up the whole keyboard and teaching the ear to recognize harmony in any position. You'll be surprised how quickly this starts to click.</p>
+        </div>
+      </li>
+      <li>
+        <span class="tip-num">02</span>
+        <div class="tip-body">
+          <div class="tip-title">Scales with Feeling</div>
+          <p>Scales aren't just exercises — they're the grammar of music. We learn them not as drills but as landscapes, feeling the emotional character of each mode and key. Understanding scales by ear transforms them from obligation into vocabulary. You start to hear the music you want to play.</p>
+        </div>
+      </li>
+      <li>
+        <span class="tip-num">03</span>
+        <div class="tip-body">
+          <div class="tip-title">Deconstructing Songs by Ear</div>
+          <p>This is where it gets exciting. We take songs you love — any genre, any era — and figure them out together. Learning to identify chord progressions by ear, to find the root, to hear the movement of a melody. This skill compounds quickly, and every song you crack open teaches you something that applies to the next one.</p>
+        </div>
+      </li>
+      <li>
+        <span class="tip-num">04</span>
+        <div class="tip-body">
+          <div class="tip-title">Drills That Build Confidence</div>
+          <p>Targeted, musical drills weave everything together — chord transitions, arpeggios, rhythmic patterns that make your hands fluent and your ear quicker. These are never busywork; they're always in service of a musical goal you can already imagine. The real aim is that you surprise yourself, regularly.</p>
+        </div>
+      </li>
+      <li>
+        <span class="tip-num">05</span>
+        <div class="tip-body">
+          <div class="tip-title">For Kids & Adults Alike</div>
+          <p>There's something about the ear-playing approach that connects naturally with kids — it meets them where music already lives in their bodies, before notation adds complexity. But adults thrive here too. If you've always wanted to "just play" without needing sheet music, this is your path. You're more ready than you think.</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="pricing-strip">
+      <div class="price-card">
+        <div class="price-label">Ear Playing Lessons</div>
+        <div class="price-amount">$60<span style="font-size:1.2rem; color: var(--muted)"> / hr</span></div>
+        <div class="price-desc">One-on-one instruction, tailored to where you are and where you want to go. Serving the Central Coast — Monterey, Fremont, San Mateo, Gilroy, and the areas between.</div>
+      </div>
+      <div class="price-card">
+        <div class="price-label">The Promise</div>
+        <div class="price-amount" style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-style:italic; padding-top:4px">You can do this.</div>
+        <div class="price-desc">Every student who shows up with curiosity has everything they need to become a real player. The ear is trainable. The hands follow. The music is already in you — it just needs permission to come out.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CONTACT ── -->
+  <div id="tab-contact" class="panel">
+    <div class="contact-intro">
+      <p>Whether you have a piano that needs tuning or a student ready to start playing by ear — reach out. The Central Coast is covered from Monterey to Fremont, San Mateo, Gilroy, and beyond. Every note of this work is a pleasure, and it starts with a conversation.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="First and last name" required />
+          </div>
+          <div class="form-row">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-row">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" placeholder="(831) 555-0100" />
+          </div>
+          <div class="form-row">
+            <label for="service">I'm interested in…</label>
+            <select id="service" required>
+              <option value="" disabled selected>Select a service</option>
+              <option>Piano Tuning — Standard ($150)</option>
+              <option>Piano Tuning — Pitch Raise ($250)</option>
+              <option>Ear Playing Lessons — $60/hr</option>
+              <option>Not sure yet — let's talk</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="location">Your general location</label>
+            <input type="text" id="location" placeholder="e.g. Monterey, Gilroy, San Mateo…" />
+          </div>
+          <div class="form-row">
+            <label for="message">Anything else to share</label>
+            <textarea id="message" placeholder="Tell me about your piano, your student, your goals — anything that feels relevant…"></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+        <div class="form-success" id="form-success">
+          <p>"Thank you — I'll be in touch soon. Something good is coming."</p>
+        </div>
+      </div>
+
+      <div class="contact-info">
+        <div class="contact-info-block">
+          <p class="label">Service Area</p>
+          <p>Monterey · Pacific Grove · Carmel · Salinas · Santa Cruz · Gilroy · Morgan Hill · San Jose · Fremont · San Mateo · and the roads between</p>
+        </div>
+        <div class="contact-info-block">
+          <p class="label">Tuning Rates</p>
+          <p>Standard Tune-Up &nbsp;·&nbsp; <strong style="color:var(--ink)">$150</strong><br/>
+          Pitch Raise + Tuning &nbsp;·&nbsp; <strong style="color:var(--ink)">$250</strong><br/><br/>
+          Each appointment is an unhurried, joyful session. The piano gets the time it deserves.</p>
+        </div>
+        <div class="contact-info-block">
+          <p class="label">Lesson Rates</p>
+          <p>Ear Playing Instruction &nbsp;·&nbsp; <strong style="color:var(--ink)">$60 / hr</strong><br/><br/>
+          All ages and levels welcome. Especially resonates with kids, but the ear has no age limit. You are more musical than you know.</p>
+        </div>
+        <div class="contact-info-block">
+          <p class="label">A Note</p>
+          <p>This work is done with genuine love. Every tuning is a small act of restoration. Every lesson is an invitation to trust what you already hear. The best way to begin is simply to reach out.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end content-area -->
+
+<footer>
+  &copy; 2025 Central Coast Piano &nbsp;·&nbsp; Tuning &amp; Ear Playing &nbsp;·&nbsp; Monterey to the Bay
+</footer>
+
+<script>
+  function showTab(name, btn) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.querySelector('.contact-form').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }
+</script>
+</body>
+</html>
