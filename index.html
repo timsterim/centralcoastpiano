@@ -631,22 +631,22 @@
 
     <div class="contact-grid">
       <div>
-        <form class="contact-form" onsubmit="handleSubmit(event)">
+        <form class="contact-form" id="contact-form">
           <div class="form-row">
             <label for="name">Your Name</label>
-            <input type="text" id="name" placeholder="First and last name" required />
+            <input type="text" id="name" name="name" placeholder="First and last name" required />
           </div>
           <div class="form-row">
             <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="you@example.com" required />
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
           </div>
           <div class="form-row">
             <label for="phone">Phone (optional)</label>
-            <input type="tel" id="phone" placeholder="(831) 555-0100" />
+            <input type="tel" id="phone" name="phone" placeholder="(831) 555-0100" />
           </div>
           <div class="form-row">
             <label for="service">I'm interested in…</label>
-            <select id="service" required>
+            <select id="service" name="service" required>
               <option value="" disabled selected>Select a service</option>
               <option>Piano Tuning — Standard ($150)</option>
               <option>Piano Tuning — Pitch Raise ($250)</option>
@@ -656,13 +656,14 @@
           </div>
           <div class="form-row">
             <label for="location">Your general location</label>
-            <input type="text" id="location" placeholder="e.g. Monterey, Gilroy, San Mateo…" />
+            <input type="text" id="location" name="location" placeholder="e.g. Monterey, Gilroy, San Mateo…" />
           </div>
           <div class="form-row">
             <label for="message">Anything else to share</label>
-            <textarea id="message" placeholder="Tell me about your piano, your student, your goals — anything that feels relevant…"></textarea>
+            <textarea id="message" name="message" placeholder="Tell me about your piano, your student, your goals — anything that feels relevant…"></textarea>
           </div>
-          <button type="submit" class="submit-btn">Send Message</button>
+          <button type="submit" class="submit-btn" id="submit-btn">Send Message</button>
+          <p id="form-error" style="display:none; color:#a04040; font-size:0.85rem; margin-top:8px;">Something went wrong — please try again or email timsterim@gmail.com directly.</p>
         </form>
         <div class="form-success" id="form-success">
           <p>"Thank you — I'll be in touch soon. Something good is coming."</p>
@@ -707,11 +708,34 @@
     btn.classList.add('active');
   }
 
-  function handleSubmit(e) {
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    document.querySelector('.contact-form').style.display = 'none';
-    document.getElementById('form-success').style.display = 'block';
-  }
+    const btn = document.getElementById('submit-btn');
+    const errorMsg = document.getElementById('form-error');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    errorMsg.style.display = 'none';
+
+    const data = new FormData(form);
+    try {
+      const res = await fetch('https://formspree.io/f/mbdpdado', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
+      errorMsg.style.display = 'block';
+    }
+  });
 </script>
 </body>
 </html>
