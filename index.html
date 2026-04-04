@@ -28,7 +28,6 @@
       min-height: 100vh;
     }
 
-    /* ── HEADER ── */
     header {
       background: var(--cream);
       border-bottom: 1px solid var(--border);
@@ -72,7 +71,6 @@
       color: var(--accent-light);
     }
 
-    /* ── NAV TABS ── */
     nav {
       display: flex;
       gap: 0;
@@ -102,7 +100,6 @@
       border-bottom-color: var(--accent-warm);
     }
 
-    /* ── HERO ── */
     .hero {
       text-align: center;
       padding: 64px 48px 48px;
@@ -144,20 +141,17 @@
       opacity: 0.6;
     }
 
-    /* ── CONTENT AREA ── */
     .content-area {
       max-width: 860px;
       margin: 0 auto;
       padding: 16px 48px 80px;
     }
 
-    /* ── TAB PANELS ── */
     .panel { display: none; }
     .panel.active { display: block; animation: fadeIn 0.35s ease; }
 
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* ── ABOUT PANEL ── */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -212,7 +206,6 @@
       opacity: 0.95;
     }
 
-    /* ── SERVICE SECTION ── */
     .service-intro {
       margin-bottom: 40px;
     }
@@ -222,7 +215,10 @@
       line-height: 1.85;
       color: var(--muted);
       max-width: 680px;
+      margin-bottom: 16px;
     }
+
+    .service-intro p:last-child { margin-bottom: 0; }
 
     .tip-list {
       list-style: none;
@@ -261,15 +257,18 @@
       text-transform: uppercase;
       color: var(--ink);
       margin-bottom: 8px;
+      margin-top: 20px;
     }
+
+    .tip-body .tip-title:first-child { margin-top: 0; }
 
     .tip-body p {
       font-size: 0.93rem;
       line-height: 1.75;
       color: var(--muted);
+      margin-bottom: 4px;
     }
 
-    /* ── PRICING STRIP ── */
     .pricing-strip {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -307,7 +306,6 @@
       color: var(--muted);
     }
 
-    /* ── CONTACT PANEL ── */
     .contact-intro {
       margin-bottom: 36px;
     }
@@ -361,9 +359,7 @@
 
     .form-row input:focus,
     .form-row select:focus,
-    .form-row textarea:focus {
-      border-color: var(--accent-warm);
-    }
+    .form-row textarea:focus { border-color: var(--accent-warm); }
 
     .form-row textarea {
       resize: vertical;
@@ -404,7 +400,7 @@
     .contact-info-block {
       background: var(--cream);
       border: 1px solid var(--border);
-      padding: 28px 28px;
+      padding: 28px;
     }
 
     .contact-info-block .label {
@@ -436,7 +432,6 @@
       color: var(--accent);
     }
 
-    /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
       padding: 28px 48px;
@@ -447,7 +442,6 @@
       background: var(--cream);
     }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       header { padding: 24px 20px 0; }
       .hero { padding: 40px 20px 32px; }
@@ -467,7 +461,6 @@
     <div class="logo-name">Central Coast Piano</div>
     <div class="logo-sub">Tuning &nbsp;·&nbsp; Ear Playing &nbsp;·&nbsp; Monterey to the Bay</div>
   </div>
-
   <nav>
     <button class="active" onclick="showTab('about', this)">About</button>
     <button onclick="showTab('tuning', this)">Tuning</button>
@@ -476,14 +469,12 @@
   </nav>
 </header>
 
-<!-- HERO -->
 <div class="hero">
   <h1><em>Resonance.</em> From the Inside Out.</h1>
   <div class="divider"></div>
   <h2>Where discordance yields to harmony — on the keys, in the ear, and in the soul. Piano tuning and ear-playing lessons along the California Central Coast.</h2>
 </div>
 
-<!-- CONTENT -->
 <div class="content-area">
 
   <!-- ── ABOUT ── -->
@@ -510,7 +501,6 @@
         <p>Service runs from Monterey up through the Bay — Fremont, San Mateo, Gilroy, and everywhere in between. If you have a piano that needs care, or a student who is ready to unlock their ear, the drive is worth it. Reach out and let's make it happen.</p>
       </div>
     </div>
-
     <div class="philosophy-strip">
       <p>"Every piano is waiting to be heard properly — and every player has music inside them that hasn't found its way out yet. Both of those things can change."</p>
     </div>
@@ -526,14 +516,14 @@
         <span class="tip-num">01</span>
         <div class="tip-body">
           <div class="tip-title">The Standard Tune-Up</div>
-          <p>For pianos that are tuned regularly or are only slightly out of pitch. A thorough tuning that brings the instrument into its full resonance. Usually about two hours, done with care and genuine enjoyment. There is real satisfaction in handing a piano back to its owner in a state of harmony.</p>
+          <p>For pianos that are tuned somewhat regularly, slightly out of pitch, or have a handful of keys with a tinny sound. A tuning in these cases will bring the instrument into its full resonance. This usually takes about two hours, done with care and genuine enjoyment. There is real satisfaction in handing a piano back to its owner in a state of harmony.</p>
         </div>
       </li>
       <li>
         <span class="tip-num">02</span>
         <div class="tip-body">
           <div class="tip-title">Pitch Raise</div>
-          <p>When a piano has been out of tune for a long time or significantly below pitch, it needs to be raised to tension before a fine tuning can hold. This is a two-pass process — bring the strings up, then tune them true. It takes more time, more skill, and rewards you with a piano that stays in tune much longer.</p>
+          <p>When a piano has been out of tune for a long time or is significantly below pitch, it needs to be raised to tension before a fine tuning can hold. This is a two-pass process — bring the strings up, then tune them true. It takes more time, more skill, and rewards you with a piano that stays in tune much longer.</p>
         </div>
       </li>
       <li>
@@ -547,15 +537,14 @@
         <span class="tip-num">04</span>
         <div class="tip-body">
           <div class="tip-title">How Often Should You Tune?</div>
-          <p>Most pianos benefit from tuning twice a year — once in fall when heating systems come on and the air dries, and once in spring. Pianos that are played frequently, that live in variable climates, or that support a student in lessons may benefit from more. When in doubt, it's probably time.</p>
+          <p>There are three service levels to consider. A <em>pitch raise</em> is for pianos that haven't been tuned in a long time — every key must be raised, sometimes twice, before it holds. A <em>standard tune</em> is for a piano tuned once every couple of years, where most keys need adjustment. A <em>touch-up</em> addresses a handful of strings that tend to go flat before the others, often due to an aging tuning pin — these are half price, and one is included within a year of a first tune with Central Coast Piano.</p>
         </div>
       </li>
     </ul>
-
     <div class="pricing-strip">
       <div class="price-card">
         <div class="price-label">Standard Tuning</div>
-        <div class="price-amount">$150</div>
+        <div class="price-amount">$175</div>
         <div class="price-desc">A thorough tuning for pianos in reasonable pitch. Approximately two hours. Includes playing the instrument after — because every tuned piano deserves to be heard.</div>
       </div>
       <div class="price-card">
@@ -563,56 +552,64 @@
         <div class="price-amount">$250</div>
         <div class="price-desc">For pianos significantly below pitch. A two-pass process that brings the instrument up to tension, then into fine tune. The result is a piano that holds and resonates as it should.</div>
       </div>
+      <div class="price-card">
+        <div class="price-label">Touch-Up</div>
+        <div class="price-amount">$75</div>
+        <div class="price-desc">For a few sour strings that need attention between full tunings. Included at no charge within a year of a Standard or Pitch Raise appointment.</div>
+      </div>
     </div>
   </div>
 
   <!-- ── LESSONS ── -->
   <div id="tab-lessons" class="panel">
     <div class="service-intro">
-		<p>Ear playing is different from reading music, though they are not mutually exclusive. Knowing one enhances the knowing of the other. But those who carry the skills, knowledge and techniques to be an 'ear player' reap the rewards of not relying on sheet music and can have an almost unlimited set list. My students end up being the ones that can walk into a room and play the accompaniment for a group of singers — starting with 'Happy Birthday' and ending with Christmas carols. Playing accompaniment is a great joy waiting to be had!</p>
-
-		<p>Another benefit of using ear playing techniques is the readiness to jam with a vocalist, guitarist, or to support your own vocals!</p>
-		<p>Imagine how fun it is to put on a song on your phone and figure out which key it is in and then play along. I get to play with U2 in a virtual sense! </p>
-		<p>These methods support composition. Just the act of experimenting with different rhythm patterns combined with different chord progressions with a pinch of dynamics — and suddenly a song emerges!</p>
-	</div>
+      <p>Ear playing is different from reading music, though they are not mutually exclusive. Knowing one enhances the knowing of the other. But those who carry the skills, knowledge and techniques to be an 'ear player' reap the rewards of not relying on sheet music and can have an almost unlimited set list. My students end up being the special few that can walk into a room with a piano and fill it with music and all its magic. Very early in the process they will be able to play accompaniment to support vocalists or instrument players — ukulele, guitar, any instrument — starting with Happy Birthday and ending with Christmas carols. Playing accompaniment is a great joy waiting to be had!</p>
+      <p>With even modest practice — 60 to 90 minutes a week, on your own terms — a student can start to play the bass, accompaniment, and melody of songs and put on a real show.</p>
+      <p>Music reading is woven in quietly throughout — students naturally learn to read notes and combine them with the chord symbols found in most scores.</p>
+      <p>Students are also able to play along with their favorite songs from their phone or a speaker. The Beatles are a particularly fun group to jam with!</p>
+      <p>These methods support composition too. Just the act of experimenting with different rhythm patterns combined with different chord progressions and a pinch of dynamics — and suddenly a song emerges.</p>
+    </div>
     <ul class="tip-list">
       <li>
         <span class="tip-num">01</span>
         <div class="tip-body">
-          <div class="tip-title">Chords & Inversions</div>
-          <p>We begin with the building blocks — major, minor, dominant, and beyond. We learn that to be able to play all the chord types for a single key, <em> then the same can be done for every other key on the piano.<em> Then we explore inversions: the same chord in different voices, opening up the whole keyboard and teaching the ear to recognize harmony in any position. This requires some attention to fingering as good habits make future chord progressions easier to execute. You'll be surprised how quickly this starts to click.</p>
+          <div class="tip-title">Pitch Recognition, Major Scales and Chord Types</div>
+          <p>After assessing the student's ability to discern which of two notes is higher in pitch, we begin with the foundations: major scales and chord types. The four most-used chord types are introduced — major, minor, and 7th chords. It is emphasized that learning these four basic chord types for a single note, such as C, means <em>the student is empowered to play the same types for every other note on the piano.</em> That unlocks 352 chords across all the keys. Solfege is introduced through Do-Re-Mi from The Sound of Music, and fingering is demonstrated as a path to simplicity.</p>
         </div>
       </li>
       <li>
         <span class="tip-num">02</span>
         <div class="tip-body">
-          <div class="tip-title">Scales with Feeling</div>
-          <p>Scales aren't just exercises — they're the grammar of music. We learn them not as drills but as landscapes, feeling the emotional character of a major scale versus a minor scale much like they did with the chords.  You start to hear the music you want to play.  Fingering for scales is vital and reinforced.</p>
+          <div class="tip-title">Ear Playing Theory and Chord Inversions</div>
+          <p>Students learn that most songs can be played with just 3 or 4 chords, and that many follow a 1-4-5 pattern. This opens the door to chord inversions — the same chord voiced in three or more positions across an octave.</p>
         </div>
       </li>
       <li>
         <span class="tip-num">03</span>
         <div class="tip-body">
-          <div class="tip-title">Deconstructing Songs by Ear</div>
-          <p>This is where it gets exciting. We take songs you love — any genre, any era — and figure them out together. Learning to identify chord progressions by ear, to find the root, to hear the movement of a melody. This skill compounds quickly, and every song you crack open teaches you something that applies to the next one.</p>
+          <div class="tip-title">Rhythm and Hand Differential Skills</div>
+          <p>Fun drills introduce the student to using both hands with differing rhythm patterns. Fingering begins to be emphasized for both scales and inversions, and the distinct fingering for multi-octave scales is introduced.</p>
         </div>
       </li>
       <li>
         <span class="tip-num">04</span>
         <div class="tip-body">
-          <div class="tip-title">Drills That Build Confidence</div>
-          <p>Targeted, musical drills weave everything together — chord transitions, arpeggios, rhythmic patterns that make your hands fluent and your ear quicker. These are never busywork; they're always in service of a musical goal you can already imagine. The real aim is that you surprise yourself, regularly.</p>
+          <div class="tip-title">Deconstructing Songs by Ear</div>
+          <p>This is where it gets exciting. We take songs most students already know — Happy Birthday, The Alphabet Song (same melody as Twinkle Twinkle Little Star), Brahms' Lullaby, The Lion Sleeps Tonight, Heart and Soul, and seasonal favorites like Jingle Bells and Silent Night — and learn to hear and play them using the 1-4-5 pattern.</p>
+          <div class="tip-title">For Kids &amp; Adults Alike</div>
+          <p>There's something about the ear-playing approach that connects naturally with kids — it meets them where music already lives in their bodies, before notation adds complexity. But adults thrive here too. If you've always wanted to just play without needing sheet music, this is your path. You're more ready than you think.</p>
         </div>
       </li>
       <li>
         <span class="tip-num">05</span>
         <div class="tip-body">
-          <div class="tip-title">For Kids & Adults Alike</div>
-          <p>There's something about the ear-playing approach that connects naturally with kids — it meets them where music already lives in their bodies, before notation adds complexity. But adults thrive here too. If you've always wanted to "just play" without needing sheet music, this is your path. You're more ready than you think.</p>
+          <div class="tip-title">Augmented and Diminished Chords, Minor Scales</div>
+          <p>More complex chord types are introduced and made approachable, and creativity gets a big boost with the introduction of minor scales.</p>
+          <div class="tip-title">Dynamics: Giving Expression to Your Soul</div>
+          <p>The feelings evoked by playing forte (loud) versus piano (soft), a change of tempo, modulation (changing key), shifting octaves, sustains and staccatos — all of these can be arranged to paint the canvas of your very being in a way like no other. Music is magic, and this final layer makes you a magician.</p>
         </div>
       </li>
     </ul>
-
     <div class="pricing-strip">
       <div class="price-card">
         <div class="price-label">Ear Playing Lessons</div>
@@ -632,7 +629,6 @@
     <div class="contact-intro">
       <p>Whether you have a piano that needs tuning or a student ready to start playing by ear — reach out. The Central Coast is covered from Monterey to Fremont, San Mateo, Gilroy, and beyond. Every note of this work is a pleasure, and it starts with a conversation.</p>
     </div>
-
     <div class="contact-grid">
       <div>
         <form class="contact-form" id="contact-form">
@@ -652,8 +648,9 @@
             <label for="service">I'm interested in…</label>
             <select id="service" name="service" required>
               <option value="" disabled selected>Select a service</option>
-              <option>Piano Tuning — Standard ($150)</option>
+              <option>Piano Tuning — Standard ($175)</option>
               <option>Piano Tuning — Pitch Raise ($250)</option>
+              <option>Piano Tuning — Touch-Up ($75)</option>
               <option>Ear Playing Lessons — $60/hr</option>
               <option>Not sure yet — let's talk</option>
             </select>
@@ -673,7 +670,6 @@
           <p>"Thank you — I'll be in touch soon. Something good is coming."</p>
         </div>
       </div>
-
       <div class="contact-info">
         <div class="contact-info-block">
           <p class="label">Service Area</p>
@@ -681,8 +677,9 @@
         </div>
         <div class="contact-info-block">
           <p class="label">Tuning Rates</p>
-          <p>Standard Tune-Up &nbsp;·&nbsp; <strong style="color:var(--ink)">$150</strong><br/>
-          Pitch Raise + Tuning &nbsp;·&nbsp; <strong style="color:var(--ink)">$250</strong><br/><br/>
+          <p>Standard Tune-Up &nbsp;·&nbsp; <strong style="color:var(--ink)">$175</strong><br/>
+          Pitch Raise + Tuning &nbsp;·&nbsp; <strong style="color:var(--ink)">$250</strong><br/>
+          Touch-Up &nbsp;·&nbsp; <strong style="color:var(--ink)">$75</strong><br/><br/>
           Each appointment is an unhurried, joyful session. The piano gets the time it deserves.</p>
         </div>
         <div class="contact-info-block">
@@ -698,7 +695,7 @@
     </div>
   </div>
 
-</div><!-- end content-area -->
+</div>
 
 <footer>
   &copy; 2025 Central Coast Piano &nbsp;·&nbsp; Tuning &amp; Ear Playing &nbsp;·&nbsp; Monterey to the Bay
