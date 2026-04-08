@@ -432,6 +432,82 @@
       color: var(--accent);
     }
 
+    /* ── REVIEWS ── */
+    .reviews-intro {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .reviews-intro p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    .wordcloud-wrap {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      padding: 48px 32px;
+      margin-bottom: 48px;
+    }
+
+    .wordcloud-wrap svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .review-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .review-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      padding: 32px 36px;
+      position: relative;
+    }
+
+    .review-card::before {
+      content: '\201C';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 300;
+      color: var(--accent-warm);
+      opacity: 0.4;
+      position: absolute;
+      top: 12px;
+      left: 20px;
+      line-height: 1;
+    }
+
+    .review-card blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.75;
+      color: var(--ink);
+      margin-bottom: 16px;
+      padding-left: 8px;
+    }
+
+    .review-card .reviewer {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+    }
+
     footer {
       border-top: 1px solid var(--border);
       padding: 28px 48px;
@@ -465,6 +541,7 @@
     <button class="active" onclick="showTab('about', this)">About</button>
     <button onclick="showTab('tuning', this)">Tuning</button>
     <button onclick="showTab('lessons', this)">Lessons</button>
+    <button onclick="showTab('reviews', this)">Reviews</button>
     <button onclick="showTab('contact', this)">Contact</button>
   </nav>
 </header>
@@ -620,6 +697,71 @@
         <div class="price-label">The Promise</div>
         <div class="price-amount" style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-style:italic; padding-top:4px">You can do this.</div>
         <div class="price-desc">Every student who shows up with curiosity has everything they need to become a real player. The ear is trainable. The hands follow. The music is already in you — it just needs permission to come out.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── REVIEWS ── -->
+  <div id="tab-reviews" class="panel">
+    <div class="reviews-intro">
+      <p>A few words from those who have sat at the bench — or whose children have.</p>
+    </div>
+
+    <div class="wordcloud-wrap">
+      <svg viewBox="0 0 760 460" xmlns="http://www.w3.org/2000/svg">
+        <!-- Tier 1 — largest -->
+        <text x="380" y="130" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="58" font-weight="400" fill="#3B6D11" opacity="0.90">fun</text>
+        <text x="200" y="200" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="46" font-weight="400" fill="#534AB7" opacity="0.86">skill</text>
+        <text x="560" y="195" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="46" font-weight="400" fill="#0F6E56" opacity="0.86">passionate</text>
+        <!-- Tier 2 -->
+        <text x="380" y="230" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="38" font-weight="400" fill="#BA7517" opacity="0.84">talented</text>
+        <text x="110" y="268" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="34" font-weight="400" fill="#185FA5" opacity="0.83">recommend</text>
+        <text x="645" y="268" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="34" font-weight="400" fill="#993C1D" opacity="0.83">progressing</text>
+        <!-- Tier 3 -->
+        <text x="380" y="295" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="28" font-weight="400" fill="#3C3489" opacity="0.81">by ear</text>
+        <text x="165" y="155" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="26" font-weight="400" fill="#639922" opacity="0.79">learning</text>
+        <text x="580" y="140" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="26" font-weight="400" fill="#D85A30" opacity="0.79">care</text>
+        <text x="80" y="322" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="26" font-weight="400" fill="#0C447C" opacity="0.79">teacher</text>
+        <text x="672" y="318" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="26" font-weight="400" fill="#854F0B" opacity="0.79">professional</text>
+        <!-- Tier 4 -->
+        <text x="255" y="348" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="22" font-weight="400" fill="#085041" opacity="0.77">friendly</text>
+        <text x="500" y="348" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="22" font-weight="400" fill="#534AB7" opacity="0.77">personable</text>
+        <text x="380" y="385" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="20" font-weight="400" fill="#993556" opacity="0.75">top-tier results</text>
+        <text x="125" y="378" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="20" font-weight="400" fill="#3B6D11" opacity="0.75">digestible</text>
+        <text x="632" y="375" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="20" font-weight="400" fill="#185FA5" opacity="0.75">intuition</text>
+        <!-- Tier 5 -->
+        <text x="72" y="408" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="17" font-weight="400" fill="#888780" opacity="0.73">craftsmanship</text>
+        <text x="252" y="418" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="17" font-weight="400" fill="#BA7517" opacity="0.73">can't wait</text>
+        <text x="500" y="418" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="17" font-weight="400" fill="#639922" opacity="0.73">easy to learn</text>
+        <text x="682" y="410" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="17" font-weight="400" fill="#993C1D" opacity="0.73">respect</text>
+        <text x="380" y="445" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="16" font-weight="400" fill="#5F5E5A" opacity="0.70">wonderful songs</text>
+        <text x="148" y="446" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="15" font-weight="400" fill="#3C3489" opacity="0.68">complex ideas</text>
+        <text x="610" y="446" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="15" font-weight="400" fill="#0F6E56" opacity="0.68">brings to life</text>
+        <!-- Floating accents -->
+        <text x="58" y="178" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="18" font-weight="400" fill="#D4537E" opacity="0.71">immediate</text>
+        <text x="698" y="215" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="18" font-weight="400" fill="#27500A" opacity="0.71">outstanding</text>
+        <text x="55" y="232" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="16" font-weight="400" fill="#5F5E5A" opacity="0.67">rare</text>
+        <text x="700" y="162" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="16" font-weight="400" fill="#444441" opacity="0.67">refreshing</text>
+        <text x="60" y="135" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="15" font-weight="400" fill="#0C447C" opacity="0.64">tuning</text>
+        <text x="700" y="108" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="15" font-weight="400" fill="#854F0B" opacity="0.64">musical</text>
+        <text x="210" y="78" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="15" font-weight="400" fill="#993C1D" opacity="0.64">improvement</text>
+        <text x="530" y="72" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="15" font-weight="400" fill="#3C3489" opacity="0.64">kids</text>
+        <text x="380" y="58" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="14" font-weight="400" fill="#888780" opacity="0.60">greatest teachers</text>
+      </svg>
+    </div>
+
+    <div class="review-cards">
+      <div class="review-card">
+        <blockquote>Tim has that important quality when working with kids, making the learning fun! He can deliver complex ideas in easily digestible nuggets my kid gobbles up. We have only had a few sessions so far and my child is progressing very quickly and can't wait for the next one.</blockquote>
+        <div class="reviewer">Piano Parent &nbsp;·&nbsp; Lessons</div>
+      </div>
+      <div class="review-card">
+        <blockquote>Tim did an outstanding job tuning our 1895 Baltimore upright piano, and the difference was immediate. He approaches his work with a rare combination of technical skill, musical intuition, and genuine care. Not only is he a highly skilled tuner, but he's also an incredibly talented by-ear pianist, which gives him an extra edge in bringing an instrument to life. Beyond the craftsmanship, Tim is simply a pleasure to work with — friendly, personable, professional, and clearly passionate about what he does. It's refreshing to meet someone who treats both the instrument and the homeowner with such respect. I can't recommend Tim highly enough.</blockquote>
+        <div class="reviewer">Piano Owner &nbsp;·&nbsp; Tuning</div>
+      </div>
+      <div class="review-card">
+        <blockquote>Tim is one of the greatest teachers we have known. He has taught our 10 year old wonderful songs by ear in a short amount of time. The best part is that he makes it really fun and easy to learn. Can't recommend Tim enough!</blockquote>
+        <div class="reviewer">Piano Parent &nbsp;·&nbsp; Lessons</div>
       </div>
     </div>
   </div>
