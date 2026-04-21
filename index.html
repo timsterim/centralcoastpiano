@@ -849,6 +849,16 @@
     document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
     document.getElementById('tab-' + name).classList.add('active');
     btn.classList.add('active');
+    history.replaceState(null, '', '#' + name);
+  }
+
+  // On load, activate tab from URL hash if present
+  const hash = window.location.hash.replace('#', '');
+  const validTabs = ['about', 'tuning', 'lessons', 'reviews', 'contact'];
+  if (hash && validTabs.includes(hash)) {
+    const btn = [...document.querySelectorAll('nav button')]
+      .find(b => b.getAttribute('onclick').includes("'" + hash + "'"));
+    showTab(hash, btn);
   }
 
   const form = document.getElementById('contact-form');
@@ -859,7 +869,6 @@
     btn.textContent = 'Sending…';
     btn.disabled = true;
     errorMsg.style.display = 'none';
-
     const data = new FormData(form);
     try {
       const res = await fetch('https://formspree.io/f/mbdpdado', {
